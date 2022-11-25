@@ -1,4 +1,4 @@
-const cliente = {
+let cliente = {
     mesa: '',
     hora: '',
     pedido: []
@@ -15,8 +15,39 @@ function guardarCliente() {
     // Revisar si hay campos vacios
     const camposVacios = [mesa, hora].some( campo => campo === '');
     if(camposVacios) {
-        console.log('Hay al menos un campo vacío');
+        // Verificar si ya existe una alerta
+        const existeAlerta = document.querySelector('.invalid-feedback');
+        if(!existeAlerta) {
+            // Crear la alerta
+            const alerta = document.createElement('DIV');
+            alerta.classList.add('invalid-feedback', 'd-block', 'text-center');
+            alerta.textContent = 'Todos los campos son obligatorios';
+    
+            document.querySelector('.modal-body').appendChild(alerta);
+
+            // Eliminar la alerta después de 3 segundos
+            setTimeout(() => {
+                alerta.remove();
+            }, 3000);
+        }    
         return;
     }
-    console.log('Todos los campos están bien');
+    // Asignar datos al objeto cliente
+    cliente = { ...cliente, mesa, hora }
+    // console.log(cliente);
+
+    // Ocultar el modal
+    const modalFormulario = document.querySelector('#formulario');
+    const modalBootstrap = bootstrap.Modal.getInstance(modalFormulario);
+    modalBootstrap.hide();
+
+    // Mostrar secciones
+    mostrarSecciones();
+
 }
+
+function mostrarSecciones() {
+    const seccionesOcultas = document.querySelectorAll('.d-none');
+    seccionesOcultas.forEach( seccion => seccion.classList.remove('d-none'))
+}
+
