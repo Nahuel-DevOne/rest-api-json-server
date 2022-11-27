@@ -143,9 +143,68 @@ function agregarPlatillo(producto) {
         const resultado = pedido.filter( articulo => articulo.id !== producto.id);
         cliente.pedido = [...resultado];
     }
+    // Limpiar el código HTML previo
+    limpiarHTML();
 
     // Mostrar el resumen
-    
-
+    ActualizarResumen();
 
 }
+
+function ActualizarResumen(){
+    console.log('Desde actualizarResumen');
+    const contenido = document.querySelector('#resumen .contenido');
+
+    const resumen = document.createElement('DIV');
+    resumen.classList.add('col-md-6', 'card', 'py-5', 'px-3', 'shadow');
+    // Información de la mesa
+    const mesa = document.createElement('DIV');
+    mesa.textContent = 'Mesa: ';
+    mesa.classList.add('fw-bold');
+
+    const mesaSpan = document.createElement('SPAN');
+    mesaSpan.textContent = cliente.mesa;
+    mesaSpan.classList.add('fw-normal');
+    // Información de la hora
+    const hora = document.createElement('DIV');
+    hora.textContent = 'Mesa: ';
+    hora.classList.add('fw-bold');
+
+    const horaSpan = document.createElement('SPAN');
+    horaSpan.textContent = cliente.hora;
+    horaSpan.classList.add('fw-normal');
+    
+    // Agregar a los elementos padre
+    mesa.appendChild(mesaSpan);
+    hora.appendChild(horaSpan);
+
+    // Titulo de la sección
+    const heading = document.createElement('H3');
+    heading.textContent = 'Platillos consumidos';
+    heading.classList.add('my-4', 'text-center');
+
+    // Iterar sobre el array de pedido
+
+    // Agregar al resumen
+    resumen.appendChild(mesa);
+    resumen.appendChild(hora);
+    resumen.appendChild(heading);
+
+    contenido.appendChild(resumen);
+}
+
+function limpiarHTML(){
+    const contenido = document.querySelector('#resumen .contenido');
+    while(contenido.firstChild){
+        contenido.removeChild(contenido.firstChild);
+    }
+}
+
+
+
+
+
+
+
+
+
