@@ -24,18 +24,18 @@ El proyecto es una calculadora de consumos y propinas, que sirve como app para u
 - [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
 
 
-<!-- ## **Screenshots:** -->
+## **Screenshots:**
 
-<!-- ### 1. Home:
-## ![](public/images/flujo-compra/home.png)
+### 1. Inicio:
+## ![](img/home.png)
 
-### 2. Detalle del producto seleccionado:
+### 2. Ingreso de datos:
 
-## ![](public/images/flujo-compra/detalle-producto.png)
+## ![](img/inicio-pedido.png)
 
-### 3. Carrito de compras, con productos seleccionados:
+### 3. Resumen:
 
-## ![](public/images/flujo-compra/carrito-compra.png) -->
+## ![](img/pedido.png)
 
 
   <!-- Hecho con amor -->
